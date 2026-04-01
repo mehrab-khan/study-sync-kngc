@@ -1,5 +1,5 @@
-import express from express
-import cors from cors
+import express from 'express'
+import cors from 'cors'
 import homeWorkRoutes from '../backend/routes/homeWorkRoutes.js'
 import notesRoutes from '../backend/routes/notesRoutes.js'
 import noticeRoutes from './routes/noticeRoutes.js'

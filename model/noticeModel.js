@@ -12,7 +12,7 @@ const noticeSchema = new mongoose.Schema({
     postBy : {
         type : String,
         required : true
-    },
+    }
 })
 
 const noticeModel = mongoose.model("notice", noticeSchema)

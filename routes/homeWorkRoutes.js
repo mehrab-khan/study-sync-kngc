@@ -1,4 +1,4 @@
-import express from express
+import express from 'express'
 import { createNewData, getData, deleteDataById, modifyDataById, readDataById } from '../controllers/homeworkController.js'
 import upload from '../middleware/upload.js'
 const router = express.Router()
