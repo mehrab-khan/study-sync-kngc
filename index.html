@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Data</title>
+</head>
+<body>
+
+  <h2>Upload User</h2>
+
+  <form id="uploadForm">
+    <input type="text" id="name" placeholder="Enter Name" required /><br><br>
+    <input type="text" id="userId" placeholder="Enter ID" required /><br><br>
+    <input type="file" id="image" multiple required /><br><br>
+    <input type="file" name="file" id="pdf" accept="application/pdf" required />
+    <button type="submit">Upload</button>
+  </form>
+
+ <script>
+const form = document.getElementById("uploadForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const userId = document.getElementById("userId").value;
+  const images = document.getElementById("image").files;
+
+  const formData = new FormData();
+  // loop all images
+  for (let i = 0; i < images.length; i++) {
+    formData.append("images", images[i]); // "images" must match backend
+  }
+  formData.append('topic',"this is javascript")
+  formData.append("deadline","21 August")
+  formData.append("date","20 January")
+  formData.append("subject","bangla")
+  formData.append("postBy","Mehrab")
+  formData.append("pdf",document.querySelector("#pdf").files[0])
+
+  try {
+    const res = await fetch("http://localhost:3000/api/homework/new", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+});
+</script>
+</body>
+</html>
