@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', getData)
 router.post('/new', upload.fields([
-    { name: "images", maxCount: 5 },
+    { name: "images" },
     { name: "pdf", maxCount: 1 }
 ]), createNewData)
 router.delete('/delete', deleteDataById)

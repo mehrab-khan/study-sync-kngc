@@ -13,7 +13,7 @@ const getData = async (req, res) => {
 
 const createNewData = async (req, res) => {
     try{
-        const [context, date, postBy] = req.body
+        const {context, date, postBy} = req.body
          const newData = new noticeModel({
             context : context,
             date : date,

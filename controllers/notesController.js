@@ -13,7 +13,7 @@ const getData = async (req, res) => {
 
 const createNewData = async (req, res) => {
     try{
-        const [images, subject, topic, date, postBy, pdf] = req.body
+        const {images, subject, topic, date, postBy, pdf} = req.body
          const newData = new notesModel({
             images : images,
             subject : subject,

@@ -13,7 +13,7 @@ const getData = async (req, res) => {
 
 const createNewData = async (req, res) => {
     try{
-        const [profileImage, name, roll, password] = req.body
+        const {profileImage, name, roll, password} = req.body
          const newData = new userDataModel({
             profileImage : profileImage,
             name : name,
