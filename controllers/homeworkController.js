@@ -12,9 +12,10 @@ const getData = async (req, res) => {
 }
 
 const createNewData = async (req, res) => {
-    try{
-        const {images, subject, topic, date, postBy, deadline, pdf} = req.body
-         const newData = new homeworkModel({
+    try {
+        const images = req.files.images ? req.files.images.map(f => f.path) : []
+        const pdf = req.files.pdf ? req.files.pdf[0].path : null
+        const newData = new homeworkModel({
             images : images,
             subject : subject,
             topic : topic,
@@ -23,15 +24,10 @@ const createNewData = async (req, res) => {
             deadline : deadline,
             pdf : pdf
          })
-         if(newData){
-            await newData.save()
-            console.log("New Data Created")
-        }
-        res.status(201).json(newData)
-    }
-    catch(err){
-        console.log(err)
-        res.status(500).send("Server Error")
+        await newData.save()
+        res.status(201).json({ message: "Uploaded successfully", data: newData })
+    } catch (err) {
+        res.status(500).json({ error: err.message })
     }
 }
 

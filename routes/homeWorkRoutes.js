@@ -10,7 +10,7 @@ router.post('/new', upload.fields([
 ]), createNewData)
 router.delete('/delete', deleteDataById)
 router.put('/put', modifyDataById)
-router.get('read', readDataById)
+router.get('/read', readDataById)
 
 export default router
 
