@@ -13,6 +13,7 @@ const databaseURL = 'mongodb://localhost:27017'
 //connect database
 connectDB(databaseURL)
 
+app.use('/uploads', express.static('uploads'))
 //cors activate 
 app.use(cors())
 //body parser
